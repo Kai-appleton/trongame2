@@ -6,6 +6,7 @@
 #include "Gameobject.h"
 
 Gameobject* player;
+Gameobject* badsnek;
 
 /*SDL_Texture* playerTex; //not needed as we now have implemented gameObject to handle all objects
 SDL_Rect srcR, destR;*/
@@ -52,7 +53,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 
-	player = new Gameobject("assets/player.png", renderer);
+	player = new Gameobject("assets/player.png", renderer,0,0);
+	badsnek = new Gameobject("assets/badsnek.png", renderer, 50, 50);
 
 
 
@@ -84,6 +86,7 @@ void Game::update()
 {
 
 	player->Update();
+	badsnek->Update();
 	/*cnt++;
 	destR.h = 32; //change size of player
 	destR.w = 32;
@@ -100,6 +103,7 @@ void Game::render()
 {
 	SDL_RenderClear(renderer);
 	player->Render();
+	badsnek->Render();
 	//add stuff to render
 	SDL_RenderPresent(renderer);
 
